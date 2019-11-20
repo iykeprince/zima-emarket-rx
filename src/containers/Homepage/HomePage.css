@@ -1,0 +1,278 @@
+#zima-landing-page-features {
+  padding: 40px 0 0px 0;
+}
+
+.zima-signature-top {
+  position: absolute;
+  width: 100%;
+  /* margin-top: -10px; */
+  height: 100%;
+  background: url("../Resources/zima_signature.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 200;
+  background-position: 50%;
+  top: 60%;
+  height: 300px;
+  width: 300px;
+  left: 30px;
+}
+
+#zima-landing-page-features .zima-landing-page-features-title {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.zima-landing-page-features-title h2 {
+  margin-bottom: 0px;
+  padding-bottom: 15px;
+  margin-top: 0px;
+  font-weight: 600;
+  font-size: 42px;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+
+.zima-landing-page-features-title p {
+  margin-bottom: 0px;
+  font-size: 19px;
+  font-weight: 300;
+  color: #7a7a7a;
+}
+
+.zima-features-wrapper {
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, rgb(206, 55, 74) 30%, #813b71 100%);
+  transition: all 0.5s ease;
+}
+
+.zima-features-img-bg {
+  height: 350px;
+  border-radius: 5px;
+}
+
+.zima-features-img-bg.classified {
+  background: url("../Resources/zima_classified.jpg"), rgba(17, 36, 4, 0.65);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.zima-features-img-bg.classified:hover {
+  background: url("../Resources/zima_classified.jpg"),
+    linear-gradient(to left, #d13447 0, #743c79 100%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.zima-features-img-bg.money {
+  background: url("../Resources/zima_money.jpg"), rgba(17, 36, 4, 0.65);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.zima-features-img-bg.money:hover {
+  background: url("../Resources/zima_money.jpg"),
+    linear-gradient(to left, #d13447 0, #743c79 100%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.zima-features-img-bg.tickets {
+  background: url("../Resources/zima_tickets.jpg"), rgba(17, 36, 4, 0.65);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.zima-features-img-bg.tickets:hover {
+  background: url("../Resources/zima_tickets.jpg"),
+    linear-gradient(to left, #d13447 0, #743c79 100%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.zima-features-img-bg.logistics {
+  background: url("../Resources/zima_logistics.jpg"), rgba(17, 36, 4, 0.65);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.zima-features-img-bg.logistics:hover {
+  background: url("../Resources/zima_logistics.jpg"),
+    linear-gradient(to left, #d13447 0, #743c79 100%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.zima-features-img-bg.bills {
+  background: url("../Resources/zima_bills_payment.jpg"), rgba(17, 36, 4, 0.65);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.zima-features-img-bg.bills:hover {
+  background: url("../Resources/zima_bills_payment.jpg"),
+    linear-gradient(to left, #d13447 0, #743c79 100%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.zima-features-img-bg.flights {
+  background: url("../Resources/zima_flights.jpg"), rgba(17, 36, 4, 0.65);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.zima-features-img-bg.flights:hover {
+  background: url("../Resources/zima_flights.jpg"),
+    linear-gradient(to left, #d13447 0, #743c79 100%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.zima-features-list-text {
+  position: absolute;
+  width: 100%;
+  margin-top: -145px;
+  padding: 20px 20px 0px 20px;
+  display: block;
+}
+
+.zima-features-list-text h5 {
+  font-size: 18px;
+  color: #fff;
+  padding-top: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.zima-features-list-text p {
+  color: #c1c1c1;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.zima-features-external-link {
+  border-bottom: 2px solid #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.zima-features-external-link:hover {
+  color: #ca3549;
+  border-bottom: 2px solid #ca3549;
+  margin-left: 8px;
+}
+
+#zima-clients.clients {
+  position: relative;
+  margin-top: 7.1em;
+  margin-bottom: 7.1em;
+  text-align: center;
+}
+
+.zima-clients-header {
+  position: relative;
+}
+
+.zima-clients-title {
+  text-align: center;
+  margin-left: 30px;
+  font-weight: 600;
+  font-size: 42px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  color: #3d3d3d;
+}
+
+.zima-clients-fade-text {
+  font-weight: 700;
+  font-size: 10.8em;
+  line-height: 1;
+  color: #000;
+  position: absolute;
+  left: 0;
+  top: 0.03em;
+  opacity: 0.035;
+  transform: translate(-50%, -50%);
+}
+
+.zima-clients-list-wrapper {
+  margin-top: 30px;
+}
+
+.zima-clients-list-wrapper .zima-clients-list li {
+  list-style: none;
+}
+
+.zima-clients-list .zima-client {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 3.8em 1.95em 0;
+  margin: 0;
+}
+
+.zima-clients-list .zima-client img {
+  opacity: 0.2;
+  display: block;
+  transition: all 0.5s;
+  width: 250px;
+}
+
+.zima-clients-list .zima-client a:hover img {
+  opacity: 1;
+}
+
+.zima-disclaimer {
+  background-color: #0c101c;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.zima-signature-bottom {
+  position: absolute;
+  width: 100%;
+  margin-top: -10px;
+  height: 100%;
+  background: url("../Resources/zima_signature.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 200;
+  background-position: 50%;
+  top: 200%;
+  height: 300px;
+  width: 300px;
+  right: 30px;
+}
+
+.zima-disclaimer p {
+  color: #939394;
+  margin: 0;
+  font-size: 13px;
+  line-height: 23px;
+}

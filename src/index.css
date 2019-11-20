@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Montserrat", "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background: #f9f9f9;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none !important;
+}
+.color-theme {
+  color: #e02631;
+}
