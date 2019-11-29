@@ -1,5 +1,5 @@
 #zima-landing-page-features {
-  padding: 40px 0 0px 0;
+  padding: 80px 0;
 }
 
 .zima-signature-top {
@@ -12,10 +12,10 @@
   background-size: cover;
   z-index: 200;
   background-position: 50%;
-  top: 60%;
-  height: 300px;
-  width: 300px;
-  left: 30px;
+  top: 75%;
+  height: 200px;
+  width: 200px;
+  left: 20px;
 }
 
 #zima-landing-page-features .zima-landing-page-features-title {
@@ -27,12 +27,12 @@
 
 .zima-landing-page-features-title h2 {
   margin-bottom: 0px;
-  padding-bottom: 15px;
-  margin-top: 0px;
+  margin-top: 20px;
   font-weight: 600;
   font-size: 42px;
   text-transform: capitalize;
-  letter-spacing: 2px;
+  /* letter-spacing: 2px; */
+  color: #e02631;
 }
 
 .zima-landing-page-features-title p {
@@ -63,6 +63,22 @@
   background-blend-mode: multiply;
 }
 .zima-features-img-bg.classified:hover {
+  background: url("../Resources/zima_classified.jpg"),
+    linear-gradient(to left, #d13447 0, #743c79 100%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.zima-features-img-bg.emarket {
+  background: url("../Resources/zima_classified.jpg"), rgba(17, 36, 4, 0.65);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.zima-features-img-bg.emarket:hover {
   background: url("../Resources/zima_classified.jpg"),
     linear-gradient(to left, #d13447 0, #743c79 100%);
   background-repeat: no-repeat;
@@ -250,11 +266,11 @@
 
 .zima-disclaimer {
   background-color: #0c101c;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
+  /* padding-bottom: 20px; */
 }
 
-.zima-signature-bottom {
+/* .zima-signature-bottom {
   position: absolute;
   width: 100%;
   margin-top: -10px;
@@ -264,11 +280,11 @@
   background-size: cover;
   z-index: 200;
   background-position: 50%;
-  top: 200%;
+  top: 160%;
   height: 300px;
   width: 300px;
   right: 30px;
-}
+} */
 
 .zima-disclaimer p {
   color: #939394;

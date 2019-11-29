@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -17,4 +21,17 @@ a {
 }
 .color-theme {
   color: #e02631;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+span {
+  text-rendering: geometricPrecision;
 }

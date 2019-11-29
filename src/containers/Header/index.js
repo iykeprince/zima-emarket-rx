@@ -28,8 +28,9 @@ class Header extends Component {
               <div className='zima-hero-banner-text'>
                 <h2>Find Great Offers Today!</h2>
                 <p>
-                  Thinking of the ultimate way to buy cinema tickets, event
-                  tickets, order food, pay bills and buy airtime? Think Zima.
+                  Getting bored with too many Apps for different purposes? Get
+                  on Zima to buy/sell, register your store, pay bills, buy event
+                  tickets and lots more!
                 </p>
               </div>
             </div>

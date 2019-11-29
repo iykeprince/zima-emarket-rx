@@ -4,7 +4,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import "./HomePage.css";
 
-import ClientAccess from "../Resources/clients/access-logo.png";
+// import ClientAccess from "../Resources/clients/access-logo.png";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -18,15 +18,12 @@ class HomePage extends Component {
           <div className='container'>
             <div className='zima-signature-top'></div>
             <div className='row'>
-              <div className='zima-landing-page-features-title'>
-                <h2>
-                  Explore our best <span>deals</span>
-                </h2>
-                <p>
-                  We are a comparison and reference source dedicated to
-                  improving marketplace conditions for you, our customer. Select
-                  from our range of services below to find amazing deals.
-                </p>
+              <div className='col-md-12'>
+                <div className='zima-landing-page-features-title'>
+                  <h2>
+                    Explore our best <span>deals</span>
+                  </h2>
+                </div>
               </div>
 
               <div className='col-md-4'>
@@ -36,7 +33,7 @@ class HomePage extends Component {
                   </a>
                   <div className='zima-features-list-text'>
                     <h5>Zima Classified</h5>
-                    <p>Lorem Ipsum is that it has a more-or-less</p>
+                    <p>Buy and sell with our growing zima community </p>
                     <a className='zima-features-external-link' href='/'>
                       Visit Website
                     </a>
@@ -47,11 +44,11 @@ class HomePage extends Component {
               <div className='col-md-4'>
                 <div className='zima-features-wrapper'>
                   <a href='/'>
-                    <div className='zima-features-img-bg'></div>
+                    <div className='zima-features-img-bg emarket'></div>
                   </a>
                   <div className='zima-features-list-text'>
                     <h5>Zima E-Markets</h5>
-                    <p>Lorem Ipsum is that it has a more-or-less</p>
+                    <p>Verified, local vendors now at your fingertips.</p>
                     <a className='zima-features-external-link' href='/'>
                       Visit Website
                     </a>
@@ -66,52 +63,7 @@ class HomePage extends Component {
                   </a>
                   <div className='zima-features-list-text'>
                     <h5>Zima Tickets</h5>
-                    <p>Lorem Ipsum is that it has a more-or-less</p>
-                    <a className='zima-features-external-link' href='/'>
-                      Visit Website
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className='col-md-4'>
-                <div className='zima-features-wrapper'>
-                  <a href='/'>
-                    <div className='zima-features-img-bg logistics'></div>
-                  </a>
-                  <div className='zima-features-list-text'>
-                    <h5>Zima Logistics</h5>
-                    <p>Lorem Ipsum is that it has a more-or-less</p>
-                    <a className='zima-features-external-link' href='/'>
-                      Visit Website
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className='col-md-4'>
-                <div className='zima-features-wrapper'>
-                  <a href='/'>
-                    <div className='zima-features-img-bg bills'></div>
-                  </a>
-                  <div className='zima-features-list-text'>
-                    <h5>Zima Bill Payment</h5>
-                    <p>Lorem Ipsum is that it has a more-or-less</p>
-                    <a className='zima-features-external-link' href='/'>
-                      Visit Website
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className='col-md-4'>
-                <div className='zima-features-wrapper'>
-                  <a href='/'>
-                    <div className='zima-features-img-bg money'></div>
-                  </a>
-                  <div className='zima-features-list-text'>
-                    <h5>Zima E-Markets</h5>
-                    <p>Lorem Ipsum is that it has a more-or-less</p>
+                    <p>Ditch queues and get tickets before showtime.</p>
                     <a className='zima-features-external-link' href='/'>
                       Visit Website
                     </a>
@@ -122,10 +74,40 @@ class HomePage extends Component {
               {/* <div className='col-md-4'>
                 <div className='zima-features-wrapper'>
                   <a href='/'>
-                    <div className='zima-features-img-bg flights'></div>
+                    <div className='zima-features-img-bg logistics'></div>
                   </a>
                   <div className='zima-features-list-text'>
-                    <h5>Zima Flights</h5>
+                    <h5>Zima Logistics</h5>
+                    <p>Trusted shippers and carriers to handle deliveries.</p>
+                    <a className='zima-features-external-link' href='/'>
+                      Visit Website
+                    </a>
+                  </div>
+                </div>
+              </div> */}
+
+              {/* <div className='col-md-4'>
+                <div className='zima-features-wrapper'>
+                  <a href='/'>
+                    <div className='zima-features-img-bg bills'></div>
+                  </a>
+                  <div className='zima-features-list-text'>
+                    <h5>Zima Bill Payment</h5>
+                    <p>Settle just about any bill conveniently!</p>
+                    <a className='zima-features-external-link' href='/'>
+                      Visit Website
+                    </a>
+                  </div>
+                </div>
+              </div> */}
+
+              {/* <div className='col-md-4'>
+                <div className='zima-features-wrapper'>
+                  <a href='/'>
+                    <div className='zima-features-img-bg money'></div>
+                  </a>
+                  <div className='zima-features-list-text'>
+                    <h5>Zima Money</h5>
                     <p>Lorem Ipsum is that it has a more-or-less</p>
                     <a className='zima-features-external-link' href='/'>
                       Visit Website
@@ -136,6 +118,7 @@ class HomePage extends Component {
             </div>
           </div>
         </section>
+        {/* 
         <section id='zima-clients' className='clients'>
           <div className='container'>
             <header className='zima-clients-header'>
@@ -176,8 +159,9 @@ class HomePage extends Component {
               </ul>
             </div>
           </div>
-        </section>
-        <div className='zima-disclaimer'>
+        </section> */}
+
+        <section className='zima-disclaimer'>
           <div className='container'>
             <div class='zima-signature-bottom'></div>
             <div className='row align-items-center'>
@@ -191,7 +175,7 @@ class HomePage extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </section>
         <Footer />
       </div>
     );

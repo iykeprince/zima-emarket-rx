@@ -14,7 +14,7 @@ import ZimaBottomLogo from "../Resources/zima_logo.png";
 class Footer extends Component {
   render() {
     return (
-      <div className='zima-landing-page-footer'>
+      <section className='zima-landing-page-footer'>
         <div className='zima-pattern-overlay-footer'></div>
         <div className='zima-landing-page-footer-bottom'>
           <div className='container'>
@@ -25,25 +25,27 @@ class Footer extends Component {
                     <img src={ZimaBottomLogo} alt='Zima Logo' />
                   </figure>
                   <p>
-                    With more than 15 years of experience we can proudly say
-                    that we are one of the best in business, a trusted supplier
-                    for more than 1000 companies...
+                    Zima is Nigeria’s leading online marketplace to access
+                    diverse products and service offerings. We are committed to
+                    simplifying everyday online transactions with our safe and
+                    secure platform. Zima is the smart and easy way to get
+                    things done online.
                   </p>
                 </div>
                 <div className='col-md-4'>
-                  <h5>Head Office</h5>
-                  <address>
+                  <h5>&nbsp;</h5>
+                  {/* <address>
                     4th floor, Grace and Faith plaza, by Arroma junction,
                     <br />
                     Onitsha-Enugu express way, Awka
                     <br />
                     Anambra state. Nigeria.
-                  </address>
+                  </address> */}
                 </div>
                 <div className='col-md-3'>
                   <h5>Say Hello</h5>
                   <address>
-                    E: reach@zima.com.ng <br />
+                    E: hello@zima.com.ng <br />
                     P: +234 811 249 5413
                   </address>
                   <ul>
@@ -92,7 +94,7 @@ class Footer extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
