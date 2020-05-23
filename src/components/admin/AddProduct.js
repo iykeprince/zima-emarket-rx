@@ -88,7 +88,10 @@ const AddProduct = ({ config, shop }) => {
 
       formData.append("name", product_name);
       formData.append("price", product_price);
-      formData.append("images", product_files);
+  
+      [...product_files].map(file => {
+        formData.append("images[]", file);
+      });
       formData.append("views", 0);
       //   console.log("data to upload", data);
 
