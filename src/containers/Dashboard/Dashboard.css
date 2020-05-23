@@ -1,0 +1,8 @@
+aside ul.nav{
+    margin: 0;
+    padding: 0;
+}
+aside ul.nav li{
+    display: block;
+
+}

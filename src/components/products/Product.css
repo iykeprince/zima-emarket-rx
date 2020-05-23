@@ -1,0 +1,104 @@
+
+.inside2-box {
+    width: 100%;
+    padding: 0px;
+    margin-bottom: 20px;
+  }
+  
+  .inside2-box-content {
+    border: 6px solid #4c3c81;
+    border-radius: 10px;
+    width: 95%;
+    height: auto;
+  }
+  
+  .inside2-box-content.markets {
+    border: 6px solid #e0242f;
+  }
+  
+  .content-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e2e2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .content-img-overlay {
+    width: 100%;
+    height: 240px;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+  }
+  
+  .content-img i {
+    font-size: 150px;
+    color: #fff;
+    padding: 30px 0px;
+  }
+  
+  .content-img img {
+    width: 100%;
+  }
+  
+  .content-img span {
+    position: absolute;
+    background-color: #e0242f;
+    top: 6px;
+    left: 6px;
+    padding: 7px 30px 7px 10px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 60px;
+    font-family: 'Poppins';
+    font-size: 12px;
+    color: #fff;
+  }
+  
+  .content-text {
+    width: 100%;
+    background-color: #fff;
+    padding: 7px 10px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  
+  .content-text h4 {
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: bolder;
+    color: #1c4863;
+    padding-top: 10px;
+    margin: 0;
+  }
+  
+  .content-text h4:before {
+    content: '';
+    width: 60px;
+    height: 2px;
+    background: #df242f;
+    position: absolute;
+    margin-top: -7px;
+  }
+  
+  .content-text p {
+    color: #df242f;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    font-weight: bolder;
+    margin-top: 2px;
+    margin-bottom: 0px;
+  }
+  
+  .content-text span {
+    color: #1c4863;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    margin-top: 0px;
+  }
+  
+  .inside2-box-content.markets .content-text span {
+    color: #e0242f;
+  }

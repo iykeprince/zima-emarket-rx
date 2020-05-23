@@ -1,23 +1,65 @@
 .zima-landing-page-footer {
   position: relative;
-  padding: 50px 0;
-  background-color: #0c101c;
-  background-image: linear-gradient(315deg, #000 0%, #0c101c 74%);
+  padding: 70px 0 0 0;
+  background-color: #4c3c81;
+  overflow: hidden;
 }
 
-/* .zima-landing-page-footer::after {
+.zima-landing-page-footer::before {
+  content: '';
+  background-image: url(../Resources/icon-3.png);
   position: absolute;
-  height: 200px;
-  width: 100%;
-  background: url(../Resources/zima_bg_footer.jpg) no-repeat scroll center
-    bottom;
-  content: "";
-  left: 0px;
-  bottom: calc(100% - 3px);
-} */
+  background-size: cover;
+  background-position: 0% 30%;
+  width: 500px;
+  height: 100%;
+  right: -90px;
+  top: 0;
+}
 
 .zima-footer-information {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
+}
+
+.zima-footer-information .footer-box-main {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.zima-footer-information .footer-box {
+  width: 30%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.zima-footer-information ul {
+  padding: 0;
+  width: 50%;
+}
+
+.zima-footer-information ul li {
+  list-style: none;
+  color: #fff;
+  font-size: 13px;
+  text-align: left;
+  font-family: 'Montserrat';
+  margin-bottom: 8px;
+}
+
+.zima-footer-information ul li:first-child {
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.zima-footer-information h3 {
+  font-size: 17px;
+  color: #fff;
 }
 
 .zima-footer-information .logo {
@@ -29,88 +71,63 @@
   width: 200px;
 }
 
-.zima-footer-information p {
+.copyright p {
+  margin-top: 17px;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+
+.terms p {
+  margin-top: 17px;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+
+.icons {
   margin-top: 10px;
-  color: #939394;
-  font-size: 14px;
+  text-align: right;
+  padding-right: 60px;
 }
 
-.fp-landing-page-footer .zima-footer-information ul {
+.zima-landing-page-footer .zima-landing-page-footer-bottom .icons {
+  position: relative;
+}
+
+.zima-landing-page-footer .zima-landing-page-footer-bottom .icons ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
-.fp-landing-page-footer .zima-footer-information ul li {
+.zima-landing-page-footer .zima-landing-page-footer-bottom .icons ul li {
   display: inline-block;
   position: relative;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 
-.fp-landing-page-footer .zima-footer-information ul li a {
-  color: #939394;
-  font-size: 14px;
-  line-height: 23px;
-  margin: 10px 20px;
-}
-
-.zima-footer-information h5 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #e02631;
-}
-
-.zima-footer-information address {
-  line-height: 26px;
-  color: #939394;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.zima-landing-page-footer .zima-landing-page-footer-bottom {
-  position: relative;
-}
-
-.zima-landing-page-footer .zima-landing-page-footer-bottom .copyright-text {
-  position: relative;
-  padding-bottom: 50px;
-  font-size: 14px;
-  line-height: 24px;
-  color: #939394;
-  font-weight: 400;
-}
-
-.zima-landing-page-footer .zima-landing-page-footer-bottom .footer-sub-info {
-  position: relative;
-  padding-bottom: 50px;
-  font-size: 14px;
-  line-height: 23px;
-  color: #939394;
-  font-weight: 400;
-  text-align: justify;
-}
-
-.zima-landing-page-footer .zima-landing-page-footer-bottom ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.zima-landing-page-footer .zima-landing-page-footer-bottom ul li {
-  display: inline-block;
-  position: relative;
-  padding-right: 20px;
-}
-
-.zima-landing-page-footer .zima-landing-page-footer-bottom ul li a {
-  color: #939394;
-  font-size: 14px;
-  line-height: 23px;
+.zima-landing-page-footer .zima-landing-page-footer-bottom .icons ul li a {
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
   text-decoration: none;
 }
 
-.zima-landing-page-footer .zima-landing-page-footer-bottom ul li a:hover {
-  color: #fff;
+.zima-landing-page-footer
+  .zima-landing-page-footer-bottom
+  .icons
+  ul
+  li
+  a:hover {
+  color: #a2a4a8;
   transition: 0.4s;
+}
+
+@media only screen and (max-width: 480px) {
+  .zima-footer-information h3 {
+    font-size: 16px;
+  }
+  .icons {
+    text-align: center;
+  }
 }
