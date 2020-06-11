@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Header from "../../../containers/Header";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import DefaultLayout from "../../../containers/layouts/default";
+import { requestSignUp } from '../../../redux/actions/authActions';
 
-const Register = (props) => {
+const Register = ({isAuthenticated, loading, errors, reset, history}) => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 
   useEffect(() => {
-    if (isAuthenticated) {
-      props.history.push("/dashboard");
-    }
+    // if (isAuthenticated) {
+    //   history.push("/dashboard");
+    // }
     //eslint-disable-next-line
-  }, [isAuthenticated]);
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -28,28 +28,12 @@ const Register = (props) => {
       email === "" ||
       password === ""
     ) {
-      setErrors(["All fields are required"]);
+      errors.message = "All fields are required";
     } else {
-      setLoading(true);
-      try {
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        const data = { first_name, last_name, email, phone_number, password };
-        const url = "/api/register";
+      requestSignUp({ first_name, last_name, email, phone_number, password });
 
-        const res = await axios.post(url, data, config);
-
-        localStorage.setItem("token", res.data.token);
-        setLoading(false);
-        setIsAuthenticated(true);
+      if(reset){
         resetForm();
-      } catch (err) {
-        localStorage.removeItem("token");
-        setIsAuthenticated(false);
-        setLoading(false);
       }
     }
   };
@@ -62,15 +46,41 @@ const Register = (props) => {
     setPassword("");
   };
 
+  const signInWithFacebook = () => {
+    alert('facebook login')
+  }
+
+  const signInWithGoogle = () => {
+    alert('google sign in')
+  }
+
   return (
-    <div>
-      <Header />
-      <div className="container center-form" style={{ marginTop: "140px" }}>
+    <DefaultLayout>
+      <div className="container center-form">
+        
         {errors &&
           errors.length > 0 &&
           errors.map((error) => (
             <div classname="alert alert-danger">{error}</div>
           ))}
+          <h4 className="social-text">Register with your:</h4>
+        <div className="d-flex">
+          <button
+            className="btn btn-primary btn-sm btn-fb mr-1"
+            onClick={signInWithFacebook}
+          >
+            <i className="fa fa-facebook"></i> Facebook
+          </button>
+          <button
+            className="btn btn-danger btn-sm btn-google"
+            onClick={signInWithGoogle}
+          >
+            <i className="fa fa-google"></i> Google
+          </button>
+        </div>
+        <hr />
+          <h4>Or Register</h4>
+          <hr />
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="first_name">First Name</label>
@@ -125,14 +135,34 @@ const Register = (props) => {
             />
           </div>
           <div className="btn-position">
-            <button className="btn btn-warning btn-md btn-block">
+            <button className="btn btn-danger btn-md btn-block">
               Register {loading && <i className="fa fa-spinner fa-spin"></i>}
             </button>
           </div>
         </form>
       </div>
-    </div>
+    </DefaultLayout>
   );
 };
 
-export default Register;
+Register.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  success: PropTypes.bool.isRequired,
+  failed: PropTypes.bool.isRequired,
+  errors: PropTypes.object.isRequired,
+  reset: PropTypes.bool.isRequired,
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+  success: state.auth.success,
+  failed: state.auth.failed,
+  errors: state.auth.error,
+  reset: state.auth.reset
+})
+
+export default connect(mapStateToProps, {
+  requestSignUp
+})(Register);

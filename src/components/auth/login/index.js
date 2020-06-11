@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
-
+import { connect } from "react-redux";
+import { requestLogin } from "../../../redux/actions/authActions";
+import PropTypes from 'prop-types';
+import DefaultLayout from "../../../containers/layouts/default";
 import "./Login.css";
-import axios from "axios";
-import Header from "../../../containers/Header";
 
-const Login = (props) => {
+const Login = ({isAuthenticated, loading, errors, requestLogin, history}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/dashboard");
+      history.push("/dashboard");
     }
     //eslint-disable-next-line
   }, [isAuthenticated]);
@@ -22,41 +20,28 @@ const Login = (props) => {
     e.preventDefault();
     if (email === "" || password === "") {
       //error log
-      setErrors("All fields are required!");
+      errors.message = "All fields are required!";
     } else {
-      setLoading(true);
-      try {
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        const url = "/api/login";
-        const data = { email, password };
-        const res = await axios.post(url, data, config);
-
-        console.log(res.data);
-        localStorage.setItem("token", res.data.token);
-        setIsAuthenticated(true);
-        setLoading(false);
-      } catch (err) {
-        console.log("error", err.response.status);
-        if(err.response.status === 401) setErrors('Attempt to login was unsuccessful, please provide valid email/password');
-
-        localStorage.removeItem("token");
-        setIsAuthenticated(false);
-        setLoading(false);
-        setEmail('');
-        setPassword('');
-      }
+      requestLogin(email, password);
     }
   };
 
+  const signInWithFacebook = () => {
+    alert("facebook login");
+  };
+
+  const signInWithGoogle = () => {
+    alert("google sign in");
+  };
+
   return (
-    <div>
-      <Header />
-      <div className="center-form" style={{marginTop: '140px'}}>
-        {errors && <div className='alert alert-danger'>{errors}</div>}
+    <DefaultLayout>
+      <div className="center-form">
+        <header>
+          <h3>Sign In</h3>
+          <hr />
+        </header>
+        {JSON.stringify(errors) !== '{}' && <div className="alert alert-danger">{errors.data.error || errors.message}</div>}
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
@@ -80,12 +65,42 @@ const Login = (props) => {
             />
           </div>
           <div className="btn-position">
-            <button className="btn btn-warning btn-md btn-block">Login {loading && <i className='fa fa-spinner fa-spin'></i> }</button>
+            <button className="btn btn-danger btn-md btn-block">
+              Login {loading && <i className="fa fa-spinner fa-spin"></i>}
+            </button>
           </div>
         </form>
+        <hr />
+        <h4 className="social-text">Connect with your:</h4>
+        <div className="d-flex justify-content-between">
+          <button
+            className="btn btn-primary btn-sm btn-fb"
+            onClick={signInWithFacebook}
+          >
+            <i className="fa fa-facebook"></i> Sign in Facebook
+          </button>
+          <button
+            className="btn btn-danger btn-sm btn-google"
+            onClick={signInWithGoogle}
+          >
+            <i className="fa fa-google"></i> Sign in Google
+          </button>
+        </div>
       </div>
-    </div>
+    </DefaultLayout>
   );
 };
-
-export default Login;
+Login.propTypes = {
+  requestLogin: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  errors: PropTypes.object,
+};
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+  errors: state.auth.error
+})
+export default connect(mapStateToProps, {
+  requestLogin,
+})(Login);

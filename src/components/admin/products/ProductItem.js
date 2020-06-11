@@ -32,7 +32,7 @@ const ProductItem = ({ product }) => {
       <div className="inside2-box-content">
         <div
           className="content-img"
-          style={{ backgroundImage: `url(${image})`, backgroundSize: "cover" }}
+          style={{ backgroundImage: `url(${image})`, backgroundSize: "cover", width: '100%', height: '100%' }}
         >
           <span>Boosted Ad</span>
           <i className="fa fa-user-circle"></i>

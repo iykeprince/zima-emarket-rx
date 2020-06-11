@@ -1,0 +1,25 @@
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
+export const FETCH_MARKETS = 'FETCH_MARKETS';
+export const FETCH_MARKET_SHOPS = 'FETCH_MARKET_SHOPS';
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+export const REQUEST_LOGIN = 'REQUEST_LOGIN';
+export const REQUEST_SIGN_UP = 'REQUEST_SIGN_UP';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
+export const GET_USER = 'GET_USER';
+export const GET_MY_PRODUCTS = 'GET_MY_PRODUCT';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const EDIT_PRODUCT = 'EDIT_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const LOGGED_OUT_SUCCESS = 'LOGGED_OUT_SUCCESS'; 
+export const LOGGED_OUT_FAIL = 'LOGGED_OUT_FAIL';
+export const GET_SHOP = 'GET_SHOP';
+export const GET_SHOP_ERROR = 'GET_SHOP_ERROR';
+
+export const GET_ERRORS = 'GET_ERRORS';
+export const LOADING_DATA = 'LOADING_DATA';
+export const GET_USER_FAIL = 'GET_USER_FAIL';
+export const GET_MY_PRODUCTS_ERROR = 'GET_MY_PRODUCTS_ERROR';
+

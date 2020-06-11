@@ -1,34 +1,24 @@
+
 #zima-header.zima-header {
   width: 100%;
   user-select: none;
   background: #e0242f;
-  height: 80px;
+  height: inherit;
   position: relative;
 }
 
-.zima-lgo-wrapper .logo {
-  padding-left: 35px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  float: left;
-  width: 10%;
+.zima-header .navbar{
+  padding: 0;
 }
+
 
 .zima-lgo-wrapper .logo .icon {
   background-image: url(../Resources/icon-2.png);
   background-size: 100% auto;
-  width: 45px;
+  width: 45px; 
   height: 45px;
 }
 
-.zima-lgo-wrapper ul {
-  width: 70%;
-  margin-bottom: 20px;
-  margin-top: 28px;
-  float: left;
-  display: flex;
-  justify-content: center;
-}
 
 .zima-lgo-wrapper ul li {
   display: inline-block;
@@ -45,47 +35,27 @@
 
 .zima-lgo-wrapper ul li.text p {
   color: #fff;
-  font-family: Montserrat;
+  font-family: 'PT Sans', Montserrat;
   font-weight: 400;
   font-size: 15px;
   text-transform: uppercase;
 }
 
-.zima-lgo-wrapper .clock {
-  width: 20%;
-  float: left;
-  margin-top: 0px;
-}
 
-.zima-lgo-wrapper .clock ul {
-  width: 50%;
-  color: #fff;
-  font-size: 13px;
-  margin-right: 10px;
-}
 
-.zima-lgo-wrapper .clock ul li {
-  margin: 1px 10px 1px 10px;
-}
-
-.clock-text {
-  font-size: 13px;
-  color: #fff;
-}
-
-.zima-lgo-wrapper .clock .zima-button {
+.zima-lgo-wrapper .zima-button {
   color: #fff;
   border: 0px solid #000;
   background-color: #1c4863;
   padding: 5px 35px;
   border-radius: 25px;
   font-size: 18px;
-  margin-top: 22px;
   text-transform: uppercase;
+  margin-left: 30px;
 }
 
 @media only screen and (max-width: 480px) {
-  .zima-lgo-wrapper .clock {
+  /* .zima-lgo-wrapper .clock {
     display: none;
   }
   .zima-lgo-wrapper ul {
@@ -104,7 +74,7 @@
     background-size: 100% auto;
     width: 200px;
     height: 45px;
-  }
+  } */
 }
 
 @media only screen and (max-width: 320px) {

@@ -1,66 +1,164 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Link, Switch, BrowserRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import Spinner from "../../components/Spinner";
+import React, { useState, useEffect } from "react";
+import DashboardLayout from "../layouts/dashboard";
 
-import axios from "axios";
-import Products from "../../components/admin/products/Products";
-import Header from "../Header";
+const Dashboard = ({
+  config,
+  user,
+  markets,
+  shop,
+  products,
+  loading,
+  logout,
+}) => {
+  const title = "Dashboard";
 
-const Dashboard = ({ config, user, shop, loading, logout }) => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    getProducts();
-    //eslint-disable-next-line
-  }, []);
-
-  if (loading) {
-    return <Spinner />;
-  }
-
-  const getProducts = async () => {
-    try {
-      const res = await axios.get(`/api/products`, config);
-      setProducts(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  console.log("auth user", user);
   return (
-    <Fragment>
-      <Header />
-      <div style={{ marginTop: "100px" }}></div>
-      <div className="container">
-        <div className="row">
+    <DashboardLayout user={user} shop={shop} title={title}>
+      {/* Content */}
+      <div className="content p-5">
+        <h3 className="title">Dashboard</h3>
+        <div className="row mt-2">
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Products</h4>
+                <p className="card-text">{products.length}</p>
+              </div>
+            </div>
+          </div>
           <div className="col-md-3">
-            <aside>
-              <div className="card">
-                <div className="card-body">
-                  <div className="user-profile">
-                    <h4>
-                      {user.first_name} {user.last_name}
-                    </h4>
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Markets</h4>
+                <p className="card-text">{markets.length}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Shop</h4>
+                <p className="card-text">{shop.name}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-2">
+          <div className="col-md-8">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card" style={{ height: "300px" }}>
+                  <div className="card-body">
+                    <div className="card-title">Analytics</div>
+                    <hr />
+                    <div className="graph-canvas p-3"></div>
                   </div>
                 </div>
               </div>
-              <Link className="btn btn-default btn-block text-left" to='/dashboard'>Dashboard</Link>
-              <a href="#!" className="btn btn-default btn-block text-left" onClick={logout}>Logout</a>
-            </aside>
+            </div>
+            <div className="row mt-2">
+              <div className="col-md-6">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Market Visualization</h5>
+                    <div
+                      className="graph-2 p-4"
+                      style={{ height: "250px" }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Map Acivity</h5>
+                    <div
+                      className="graph-3 p-4"
+                      style={{ height: "250px" }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="col-md-9">
-            <h3>Welcome to the Dashboard</h3>
-            <p>This is <strong>{shop.name}</strong> shop</p>
-            <div className="card" style={{marginBottom: '30px'}}>
-              <Products products={products} />
+          <div className="col-md-4">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card">
+                  <div className="card-body">
+                    <h4 className="card-title">
+                      <img
+                        src={shop.logo}
+                        alt="logo"
+                        className="img-responsive rounded-circle"
+                        style={{ width: "60px", height: "60px" }}
+                      />
+                      Shop
+                    </h4>
+                    <hr />
+                    <div className="card-inner-box">
+                      <div>
+                        <strong>Business</strong>
+                        <div>
+                          <p>{shop.name}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <strong>Address</strong>
+                        <p>{shop.address}</p>
+                      </div>
+                      <div>
+                        <strong>Email</strong>
+                        <p>{shop.email}</p>
+                      </div>
+                      <div>
+                        <strong>Phone</strong>
+                        <p>{shop.phone_number}</p>
+                      </div>
+                      {/* <p className="h5">{shop.market}</p> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-12 mt-2">
+                <div className="card">
+                  <div className="card-body">
+                    <div className="p-5"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-2">
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <div className="p-5"></div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <div className="p-5"></div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <div className="p-5"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </Fragment>
+      {/* content */}
+    </DashboardLayout>
   );
 };
-
 export default Dashboard;

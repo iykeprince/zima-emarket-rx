@@ -3,16 +3,17 @@ import ProductItem from "./ProductItem";
 import { Spinner } from "evergreen-ui";
 
 const Products = ({ products }) => {
+  
   return (
-    <div className="card-body">
-      <a href="/add-product" className="btn btn-outline-primary btn-block">
+    <div className="">
+      <a href="/add-product" className="btn btn-outline-primary">
         <i className="fa fa-add"></i> Add Products{" "}
-        <span className="badge badge-primary"></span>
-      </a>
-      <div className="product-list-layout">
-        <span className="badge badge-secondary">
-          Products({products.length})
+        <span className="badge badge-default">
+          ({products.length})
         </span>
+      </a>
+      <hr class="p-1"/>
+      <div className="product-list-layout">
         <div>
           {products && products.length === 0 ? (
             <Spinner />
@@ -26,7 +27,7 @@ const Products = ({ products }) => {
         </div>
       </div>
     </div>
-  );
+  ); 
 };
 
 export default Products;

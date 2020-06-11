@@ -1,3 +1,0 @@
-export const FETCH_MARKETS = 'FETCH_MARKETS';
-export const FETCH_FAILED = 'FETCH_FAILED';
-export const CLEAR_MARKETS = 'CLEAR_MARKETS';

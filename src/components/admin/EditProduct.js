@@ -32,12 +32,12 @@ const EditProduct = ({ config, shop, ...props }) => {
       const res = await axios.get(`/api/products/${productId}`, config);
 
       setLoading(false);
-      setProduct(res.data);
-      setCategoryId(res.data.category_id);
-      setSubCategoryId(res.data.sub_category_id);
       getCategories();
       getSubcategories(); 
-    //   console.log("edit product", res.data);
+      setProduct(res.data);
+      // setCategoryId(res.data.category_id);
+      // setSubCategoryId(res.data.sub_category_id);
+
       updateFields(res.data);
     } catch (err) {
       setLoading(false);
@@ -80,6 +80,8 @@ const EditProduct = ({ config, shop, ...props }) => {
   };
 
   const updateFields = (product) => {
+      setCategoryId(product.category_id);
+      setSubCategoryId(product.sub_category_id);
       setProductName(product.name);
       setProductPrice(product.price);
       setCategoryId(product.category_id);
@@ -105,8 +107,6 @@ const EditProduct = ({ config, shop, ...props }) => {
       formData.append("name", product_name);
       formData.append("price", product_price);
       formData.append("images", product_files);
-      formData.append("views", 0);
-      //   console.log("data to upload", data);
 
       try {
         const url = `/api/products/${productId}`;

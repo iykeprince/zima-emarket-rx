@@ -8,7 +8,7 @@
 .zima-hero-banner-text-wrapper {
   text-align: center;
   width: 100%;
-  height: 230px;
+  height: 130px;
   position: relative;
   background: url('../Resources/1dictyIwg9-dark.jpg');
   background-position: center;
@@ -54,6 +54,28 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
   transition: all 0.2s ease-in;
   z-index: 1000;
+}
+
+.zima-features-wrapper .market-banner{
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.zima-features-wrapper .market-banner h3{
+  color: white;
+  margin: 20px auto 0 auto;
+  padding: 0 12px ;
+
+}
+.zima-features-wrapper .market-banner p{
+  font-size: 14px;
+  color: white;
+  padding: 0 12px;
+  margin-bottom: 0;
+  font-style: italic;
 }
 
 /* .zima-features-cen {
@@ -117,7 +139,23 @@
 .inside2-content {
   margin-left: 2%;
 }
-
+.inside2-content .title-content{
+  background-color: #999;
+  padding: 0 10px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.inside2-content .title-content h3{
+  font-size: 16px;
+  padding-top: 6px;
+}
+.inside2-content .title-content span{
+  font-weight: bold;
+  font-family: 'Comfortaa';
+  font-size: 16px;
+  padding: 8px;
+}
 .inside2-content .row {
   width: 100%;
   padding: 0px;
@@ -134,7 +172,7 @@
   border: 6px solid #4c3c81;
   border-radius: 10px;
   width: 95%;
-  height: auto;
+  height: 120px;
   display: flex;
   justify-content: center;
 }
@@ -162,7 +200,7 @@
 }
 
 .content-img i {
-  font-size: 150px;
+  font-size: 90px;
   color: #fff;
   padding: 30px 0px;
 }

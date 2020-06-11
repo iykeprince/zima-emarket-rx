@@ -1,9 +1,10 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Spinner } from "evergreen-ui";
 import Header from "../../containers/Header";
+import DashboardLayout from "../../containers/layouts/dashboard";
 
-const AddProduct = ({ config, shop }) => {
+const AddProduct = ({ config, user, shop }) => {
   const images = [];
   const [products, setProducts] = useState([]);
   const [product_name, setProductName] = useState("");
@@ -88,8 +89,8 @@ const AddProduct = ({ config, shop }) => {
 
       formData.append("name", product_name);
       formData.append("price", product_price);
-  
-      [...product_files].map(file => {
+
+      [...product_files].map((file) => {
         formData.append("images[]", file);
       });
       formData.append("views", 0);
@@ -117,95 +118,99 @@ const AddProduct = ({ config, shop }) => {
   };
 
   return (
-    <Fragment>
-      <Header />
-      <div style={{ marginTop: "100px" }}></div>
-      <div className="container mt-5">
-        {loading && <Spinner />}
-        {errors && <p className="alert alert-danger">{errors}</p>}
-        {message && <p className="alert alert-success">{message}</p>}
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <h3>Add Product</h3>
-          <span className="badge badge-secondary">
-            Products({products.length})
-          </span>
-        </div>
-        <div className="card">
-          <form onSubmit={onSubmit}>
-            <div className="form-group">
-              <label htmlFor="categories">Categories</label>
-              <select
-                name="categories"
-                className="form-control"
-                onChange={onCategoryChange}
-              >
-                <option>Select Category</option>
-                {categories.length > 0 &&
-                  categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-              </select>
+    <DashboardLayout user={user} shop={shop} title="Add Product">
+      <section>
+        <div className="content p-5">
+          <div className="content-header">
+            {loading && <Spinner />} 
+            {errors && <p className="alert alert-danger">{errors}</p>}
+            {message && <p className="alert alert-success">{message}</p>}
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <h3 className="content-title">Add Product</h3>
+              <span className="badge badge-secondary">
+                Products({products.length})
+              </span>
             </div>
+          </div>
+          <div className="content-body">
+            <form onSubmit={onSubmit}>
+              <div className="form-group">
+                <label htmlFor="categories">Categories</label>
+                <select
+                  name="categories"
+                  className="form-control"
+                  onChange={onCategoryChange}
+                >
+                  <option>Select Category</option>
+                  {categories.length > 0 &&
+                    categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="categories">Sub-Categories</label>
-              <select
-                name="categories"
-                className="form-control"
-                onChange={(e) => setSubCategoryId(e.target.value)}
-              >
-                <option>Select Sub-Category</option>
-                {subcategories.length > 0 &&
-                  subcategories.map((subcategory) => (
-                    <option key={subcategory.id} value={subcategory.id}>
-                      {subcategory.name}
-                    </option>
-                  ))}
-              </select>
-            </div>
+              <div className="form-group">
+                <label htmlFor="categories">Sub-Categories</label>
+                <select
+                  name="categories"
+                  className="form-control"
+                  onChange={(e) => setSubCategoryId(e.target.value)}
+                >
+                  <option>Select Sub-Category</option>
+                  {subcategories.length > 0 &&
+                    subcategories.map((subcategory) => (
+                      <option key={subcategory.id} value={subcategory.id}>
+                        {subcategory.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="product_name"> Name</label>
-              <input
-                className="form-control"
-                type="text"
-                name="product_name"
-                value={product_name}
-                onChange={(e) => setProductName(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="product_price">Price</label>
-              <input
-                className="form-control"
-                type="text"
-                name="product_price"
-                value={product_price}
-                onChange={(e) => setProductPrice(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="product_files">Image</label>
-              <input
-                className="form-control"
-                type="file"
-                name="product_files"
-                value={product_files.name}
-                multiple
-                onChange={(e) => setProductFiles(e.target.files)}
-              />
-            </div>
-            <div className="btn-positioning">
-              <button className="btn btn-warning">
-                Add {submitLoading && <i className="fa.fa-spinner.fa-spin"></i>}{" "}
-              </button>
-            </div>
-          </form>
+              <div className="form-group">
+                <label htmlFor="product_name"> Name</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="product_name"
+                  value={product_name}
+                  onChange={(e) => setProductName(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="product_price">Price</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="product_price"
+                  value={product_price}
+                  onChange={(e) => setProductPrice(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="product_files">Image</label>
+                <input
+                  className="form-control"
+                  type="file"
+                  name="product_files"
+                  value={product_files.name}
+                  multiple
+                  onChange={(e) => setProductFiles(e.target.files)}
+                />
+                <div className="images-container"></div>
+              </div>
+              <div className="btn-positioning">
+                <button className="btn btn-warning">
+                  Add{" "}
+                  {submitLoading && <i className="fa.fa-spinner.fa-spin"></i>}{" "}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    </Fragment>
+      </section>
+    </DashboardLayout>
   );
 };
 

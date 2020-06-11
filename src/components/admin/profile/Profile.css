@@ -1,0 +1,57 @@
+.shop-cover{
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+.shop-cover .shop-logo-container{
+    width: 200px;
+    margin: 0px auto;
+    text-align: center;
+}
+.shop-cover .shop-logo-container .shop-logo{
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   position: relative;
+   -webkit-box-shadow: 11px 3px 67px -2px rgba(176,153,167,1);
+   -moz-box-shadow: 11px 3px 67px -2px rgba(176,153,167,1);
+   box-shadow: 11px 3px 67px -2px rgba(176,153,167,1);
+   border: 3px solid #4c3c81;
+   margin: 0 auto;
+}
+.shop-cover .shop-title-container{
+    border: none;
+    margin-top: 20px;
+}
+.shop-cover .shop-title-container .shop-title{
+    text-align: center;
+    display: block;
+    font-weight: 400;
+    font-size: 32px;
+    color: #fff;
+}
+.shop-cover .shop-logo-container .shop-logo img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.upload-btn-container{
+    text-align: center;
+    margin-top: 10px;
+}
+input, textarea, select{
+    width: 100%;
+}
+input:focus, textarea:focus, select:focus{
+    box-shadow: none;
+}
+
+
+.hide{
+    display: none;
+}

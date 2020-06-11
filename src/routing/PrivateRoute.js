@@ -1,74 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Redirect, Route } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const [user, setUser] = useState({});
-  const [shop, setShop] = useState({});
- 
-  const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState([]);
-  const token = localStorage.token;
-  const [isAuthenticated, setIsAuthenticated] = useState(token ? true : false);
+import { getUser, getShop, getMyProducts } from "../redux/actions/authActions";
+import { fetchMarkets } from "../redux/actions/marketActions";
 
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    },
-  };
-
+const PrivateRoute = ({
+  isAuthenticated,
+  shop,
+  markets,
+  products,
+  getUser,
+  getMyProducts,
+  getShop,
+  fetchMarkets,
+  component: Component,
+  ...rest
+}) => {
+  
   useEffect(() => {
-      if(!localStorage.token) setIsAuthenticated(false);
-      
     getUser();
     getShop();
+    fetchMarkets();
+    getMyProducts();
     //eslint-disable-next-line
-  }, [isAuthenticated]);
+  }, []);
 
-  const getUser = async () => {
-    try {
-      setLoading(true);
+  //
 
-      const res = await axios.get("/api/getUser", config);
-      
-      setUser(res.data);
-      setLoading(false);
-    } catch (err) {
-      handleError(err);
-    }
-  };
-
-  const getShop = async () => {
-    try {
-
-      const res = await axios.get("/api/getShop", config);
-      
-      setShop(res.data);
-    } catch (err) {
-      handleError(err);
-    }
-  }
-
-  const logout = async () => {
-    try {
-      await axios.post("/api/logout", {}, config);
-
-      if (localStorage.token) localStorage.removeItem("token");
-
-      setIsAuthenticated(false);
-      setLoading(false);
-    } catch (err) {
-      handleError(err);
-    }
-  };
-
-  const handleError = (err) => {
-    setLoading(false);
-    setIsAuthenticated(false);
-    setUser(null);
-    // setError([err.response]);
-  };
+  // const handleError = (err) => {
+  //   // setLoading(false);
+  //   // setIsAuthenticated(false);
+  //   // setUser(null);
+  //   // setError([err.response]);
+  // };
 
   return (
     <Route
@@ -78,13 +43,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           <Redirect to="/login" />
         ) : (
           <Component
-            {...props} 
-            config={config}
-            token={token}
-            shop={shop} 
-            user={user}
-            loading={loading}
-            logout={logout}
+            {...props}
+            shop={shop}
+            markets={markets}
+            products={products}
           />
         )
       }
@@ -92,4 +54,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  products: state.auth.products,
+  shop: state.auth.shop,
+  markets: state.markets.items,
+});
+export default connect(mapStateToProps, {
+  getUser,
+  getShop,
+  fetchMarkets,
+  getMyProducts,
+})(PrivateRoute);
