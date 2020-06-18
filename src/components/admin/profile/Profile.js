@@ -193,9 +193,8 @@ const Profile = ({ config, user, shop, markets, token }) => {
 
   return (
     <DashboardLayout shop={shop} user={user} title="Profile">
-      <div className="content p-3">
-        <div className="content-header pl-3">
-          <h3 className="content-title">Profile</h3>
+      <div className="content">
+        <div className="content-header">
           {message && message.message !== "" && (
             <div className={"alert alert-" + message.type}>
               {message.message}
@@ -203,7 +202,7 @@ const Profile = ({ config, user, shop, markets, token }) => {
           )}
         </div>
         <div className="content-body">
-          <div className="container">
+          <div className="">
             <div
               className="shop-cover"
               style={{ 

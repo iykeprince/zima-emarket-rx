@@ -4,6 +4,8 @@ import { requestLogin } from "../../../redux/actions/authActions";
 import PropTypes from 'prop-types';
 import DefaultLayout from "../../../containers/layouts/default";
 import "./Login.css";
+import Facebook from "../../Facebook";
+import Google from "../../Google";
 
 const Login = ({isAuthenticated, loading, errors, requestLogin, history}) => {
   const [email, setEmail] = useState("");
@@ -21,17 +23,9 @@ const Login = ({isAuthenticated, loading, errors, requestLogin, history}) => {
     if (email === "" || password === "") {
       //error log
       errors.message = "All fields are required!";
-    } else {
+    } else { 
       requestLogin(email, password);
     }
-  };
-
-  const signInWithFacebook = () => {
-    alert("facebook login");
-  };
-
-  const signInWithGoogle = () => {
-    alert("google sign in");
   };
 
   return (
@@ -41,7 +35,7 @@ const Login = ({isAuthenticated, loading, errors, requestLogin, history}) => {
           <h3>Sign In</h3>
           <hr />
         </header>
-        {JSON.stringify(errors) !== '{}' && <div className="alert alert-danger">{errors.data.error || errors.message}</div>}
+        {JSON.stringify(errors) !== '{}' && <div className="alert alert-danger">{errors.data.message || errors.message}</div>}
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
@@ -66,26 +60,17 @@ const Login = ({isAuthenticated, loading, errors, requestLogin, history}) => {
           </div>
           <div className="btn-position">
             <button className="btn btn-danger btn-md btn-block">
-              Login {loading && <i className="fa fa-spinner fa-spin"></i>}
+              Login 
+              {/* {loading && <i className="fa fa-spinner fa-spin"></i>} */}
             </button>
           </div>
         </form>
         <hr />
         <h4 className="social-text">Connect with your:</h4>
         <div className="d-flex justify-content-between">
-          <button
-            className="btn btn-primary btn-sm btn-fb"
-            onClick={signInWithFacebook}
-          >
-            <i className="fa fa-facebook"></i> Sign in Facebook
-          </button>
-          <button
-            className="btn btn-danger btn-sm btn-google"
-            onClick={signInWithGoogle}
-          >
-            <i className="fa fa-google"></i> Sign in Google
-          </button>
-        </div>
+          <Facebook />
+          <Google />
+        </div> 
       </div>
     </DefaultLayout>
   );

@@ -35,3 +35,5 @@ span {
   text-rendering: geometricPrecision;
   font-family: 'PT Sans', Montesserat;
 }
+
+/*"proxy": "http://localhost/zimaeventslaravel/public"*/

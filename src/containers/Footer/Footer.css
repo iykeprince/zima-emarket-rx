@@ -22,7 +22,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
 }
 
 .zima-footer-information .footer-box-main {
@@ -50,6 +49,10 @@
   text-align: left;
   font-family: 'Montserrat';
   margin-bottom: 8px;
+}
+
+.zima-footer-information ul li a{
+  color: white;
 }
 
 .zima-footer-information ul li:first-child {

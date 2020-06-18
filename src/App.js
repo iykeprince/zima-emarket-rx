@@ -17,6 +17,8 @@ import ShopProduct from "./components/admin/ShopProduct";
 import Ad from "./containers/Ad";
 import Help from "./containers/Help";
 import DiscoverMarkets from "./containers/DiscoverMarkets";
+import AboutUs from "./containers/About";
+import PrivacyPolicy from "./containers/PrivacyPolicy";
 
 const App = () => {
   return (
@@ -30,6 +32,8 @@ const App = () => {
             <Route exact path="/product/:id" component={Ad} />
             <Route exact path="/discover-markets" component={DiscoverMarkets} />
             <Route exact path="/help" component={Help} />
+            <Route exact path="/about-us" component={AboutUs} />
+            <Route exact path="/privacy-policy" component={PrivacyPolicy} />
 
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />

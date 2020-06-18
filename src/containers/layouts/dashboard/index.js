@@ -1,34 +1,47 @@
-import React, { Fragment } from "react";
-import { Link, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, Route, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { logout } from '../../../redux/actions/authActions'
 import PropTypes from "prop-types";
 
-import zimaLogo from "../../Resources/icon-2.png";
 import "./index.css";
 import Footer from "../../Footer";
-import ShopProduct from "../../../components/admin/ShopProduct";
-import Dashboard from "../../Dashboard";
 
-const DashboardLayout = ({ title, user, shop, children, logout, history }) => {
+const DashboardLayout = ({ title, isAuthenticated, logged_out, user, shop, children, history }) => {
+
+  useEffect(() => {
+    if(!isAuthenticated){
+      history.push('/login');
+    }
+    //eslint-disable-next-line
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if(logged_out){
+      history.push('/login');
+    }
+    //eslint-disable-next-line
+  }, [logged_out]);
+
+  
   return (
     <div className="container-fluid">
       <header>
         <nav className="navbar navbar-expand navbar-dark top-nav">
           <div className="container">
-            <div className="navbar-nav mr-auto">
+            <div className="navbar-nav ml-auto">
               <a href="#!" className="nav-item nav-link">
-                Home
+                {user ? (
+                  <span>
+                    {user.first_name} {user.last_name}
+                  </span>
+                ) : (
+                  "Username"
+                )}
               </a>
-              <a href="#!" className="nav-item nav-link">
-                About us
+              <a onClick={logout} href="#!" className="nav-item nav-link">
+                Logout
               </a>
-              <a href="#!" className="nav-item nav-link">
-                Contact us
-              </a>
-            </div>
-            <div className="navbar-nav right-nav">
-              <a href="#!" className="nav-item nav-link">Username</a>
-              <a href="#!" className="nav-item nav-link">Logout</a>
             </div>
           </div>
         </nav>
@@ -50,107 +63,62 @@ const DashboardLayout = ({ title, user, shop, children, logout, history }) => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav">
-                <Link className="nav-item nav-link active" to="/">
+                <NavLink className="nav-item nav-link active" to="/">
                   Home <span className="sr-only">(current)</span>
-                </Link>
-                <Link className="nav-item nav-link" to="/discover-markets">
+                </NavLink>
+                <NavLink className="nav-item nav-link" to="/discover-markets">
                   Discover Markets{" "}
-                </Link>
-                <Link className="nav-item nav-link" to="/help">
-                  Help
-                </Link>
+                </NavLink>
+                <NavLink className="nav-item nav-link" to="/about-us">
+                  About Us
+                </NavLink>
               </div>
 
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link">
-                    Sign In
-                  </Link>
+                  <NavLink to="/dashboard" className="nav-link">
+                    Dashboard
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <Link to="/register" className="nav-link">
-                    Register
-                  </Link>
+                  <NavLink to="/my-products" className="nav-link">
+                    My Products
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="https://zima.com.ng"
+                  <NavLink to="/profile" className="nav-link">
+                    Shop
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <button onClick={logout}
                     className="nav-item btn btn-primary zima-button"
                   >
-                    Sell
-                  </a>
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
       </header>
-      <div className="container">
-        {/* <div className="row">
-          <div className="col-md-2 sidebar">
-            <header>
-              <div className="icon"></div>
-            </header>
-            <aside>
-              <div className="user-profile">
-                <div className="user">
-                  <img
-                    src={shop.logo}
-                    alt="shop logo"
-                    className="img-responsive rounded-circle"
-                    style={{ width: "40px" }}
-                  />
-                  <h4 className="user-text">
-                    {user.first_name} {user.last_name}
-                  </h4>
-                </div>
-              </div>
-              <hr />
-              <div className="navigations">
-                <ul>
-                  <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/my-products">My Products</Link>
-                  </li>
-                  <li>
-                    <Link to="/profile">Profile</Link>
-                  </li>
-                  <li>
-                    <a href="!#"
-                      className="btn btn-block btn-default pl-4"
-                      style={{ textAlign: "left" }}
-                      onClick={() => {
-                        logout(); 
-                        history.push('/')
-                      }}
-                    >
-                      Logout
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </aside>
-          </div>
-          <div className="col-md-10">
-            <div className="content-container">
-              <header>
-                <div className="menu">
-                  <i className="fa fa-menu"></i>
-                  <span className="page-title">{title}</span>
-                </div>
-              </header>
-
-              {children}
-             
-              <Footer />
-            </div>
-          </div>
-        </div> */}
+      <div className="container mt-5">
+        <div className="content-container">{children}</div>
       </div>
+      <Footer />
     </div>
   );
 };
-export default DashboardLayout;
+DashboardLayout.propType = {
+  logout: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  logged_out: PropTypes.bool.isRequired,
+}
+const mapStateToProp = (state) => ({
+  user: state.auth.user,
+  isAuthenticated: state.auth.isAuthenticated,
+  logged_out: state.auth.logged_out
+});
+export default connect(mapStateToProp, {logout})(DashboardLayout);

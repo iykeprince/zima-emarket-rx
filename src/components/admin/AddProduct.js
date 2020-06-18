@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import { fetchSubCategories } from "../../redux/actions/categoryActions";
+import { saveProduct } from "../../redux/actions/productActions";
 import { Spinner } from "evergreen-ui";
-import Header from "../../containers/Header";
 import DashboardLayout from "../../containers/layouts/dashboard";
+import "./AddProduct.css";
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
-const AddProduct = ({ config, user, shop }) => {
+const AddProduct = ({ config, user, shop, categories }) => {
   const images = [];
   const [products, setProducts] = useState([]);
   const [product_name, setProductName] = useState("");
@@ -12,7 +15,7 @@ const AddProduct = ({ config, user, shop }) => {
   const [product_files, setProductFiles] = useState([]);
   const [errors, setErrors] = useState(null);
   //   const [dynamic_image_url, setDynamicImageUrl] = useState("");
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [categoryId, setCategoryId] = useState(0);
   const [subCategoryId, setSubCategoryId] = useState(0);
@@ -20,55 +23,16 @@ const AddProduct = ({ config, user, shop }) => {
   const [submitLoading, setSubmitLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  console.log("products", products);
-
+  console.log("categories", categories);
   useEffect(() => {
-    getCategories();
-    getProducts();
     //eslint-disable-next-line
-  }, []);
+  }, [product_files]);
 
-  const getProducts = async () => {
-    try {
-      const res = await axios.get(`/api/products`, config);
-      setProducts(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getCategories = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get(`/api/categories`);
-
-      setCategories(res.data);
-      setLoading(false);
-    } catch (err) {
-      console.log("error", err);
-      setLoading(false);
-    }
-  };
-
-  const getSubcategories = async () => {
-    try {
-      setLoading(true);
-      const id = categoryId;
-      const res = await axios.get(`/api/categories/${id}/subcategories`);
-
-      console.log("sub categoires", res.data);
-      setSubcategories(res.data);
-      setLoading(false);
-    } catch (err) {
-      console.log("error", err);
-      setLoading(false);
-    }
-  };
+  const getSubcategories = async () => {};
 
   const onCategoryChange = (e) => {
     const categoryId = e.target.value;
-    setCategoryId(categoryId);
-    getSubcategories();
+    fetchSubCategories(categoryId);
   };
 
   const onSubmit = async (e) => {
@@ -101,19 +65,7 @@ const AddProduct = ({ config, user, shop }) => {
         return;
       }
 
-      try {
-        const url = "/api/products";
-
-        const res = await axios.post(url, formData, config);
-        setLoading(false);
-        setMessage(res.message);
-      } catch (err) {
-        if (err.response.status === 422) {
-          setErrors(err.response.data.message);
-        }
-        console.log(JSON.stringify(err.response.data));
-        setLoading(false);
-      }
+      saveProduct(formData);
     }
   };
 
@@ -121,8 +73,18 @@ const AddProduct = ({ config, user, shop }) => {
     <DashboardLayout user={user} shop={shop} title="Add Product">
       <section>
         <div className="content p-5">
+          <div className="content-header">Working on it... right now will be up at night</div>
+        </div>
+      </section>
+    </DashboardLayout>
+  );
+
+  return (
+    <DashboardLayout user={user} shop={shop} title="Add Product">
+      <section>
+        <div className="content p-5">
           <div className="content-header">
-            {loading && <Spinner />} 
+            {loading && <Spinner />}
             {errors && <p className="alert alert-danger">{errors}</p>}
             {message && <p className="alert alert-success">{message}</p>}
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -134,6 +96,31 @@ const AddProduct = ({ config, user, shop }) => {
           </div>
           <div className="content-body">
             <form onSubmit={onSubmit}>
+              <div className="form-group">
+                <label htmlFor="product_files">Image</label>
+                <input
+                  className="form-control"
+                  type="file"
+                  name="product_files"
+                  value={product_files.name}
+                  multiple
+                  onChange={(e) => setProductFiles(e.target.files)}
+                />
+                <div className="images-container" id="images-container">
+                  <div className="row">
+                    {/* {[...product_files].map(file => (
+                      <p key={file.size}>{JSON.stringify(file)}</p>
+                    ))} */}
+
+                    <div className="col-md-3">
+                      <div className="image-container">
+                        <i className="fa fa-plus"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="form-group">
                 <label htmlFor="categories">Categories</label>
                 <select
@@ -188,18 +175,7 @@ const AddProduct = ({ config, user, shop }) => {
                   onChange={(e) => setProductPrice(e.target.value)}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="product_files">Image</label>
-                <input
-                  className="form-control"
-                  type="file"
-                  name="product_files"
-                  value={product_files.name}
-                  multiple
-                  onChange={(e) => setProductFiles(e.target.files)}
-                />
-                <div className="images-container"></div>
-              </div>
+
               <div className="btn-positioning">
                 <button className="btn btn-warning">
                   Add{" "}
@@ -214,4 +190,8 @@ const AddProduct = ({ config, user, shop }) => {
   );
 };
 
-export default AddProduct;
+const mapStateToProps = (state) => ({});
+export default connect(mapStateToProps, {
+  fetchSubCategories,
+  saveProduct,
+})(AddProduct);

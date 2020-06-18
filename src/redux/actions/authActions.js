@@ -10,10 +10,14 @@ import {
   GET_MY_PRODUCTS_ERROR,
   GET_SHOP_ERROR,
   LOGGED_OUT_SUCCESS,
+  LOGIN_FACEBOOK_SUCCESS,
+  LOGIN_GOOGLE_SUCCESS,
   LOGGED_OUT_FAIL,
+  LOGIN_FACEBOOK_FAIL,
+  LOGIN_GOOGLE_FAIL
 } from "./types";
 import axios from "axios";
-import jwt from 'jwt-decode';
+// import jwt from 'jwt-decode';
 
 const config = {
   headers: {
@@ -21,6 +25,35 @@ const config = {
     Authorization: `Bearer ${localStorage.token}`,
   },
 };
+
+export const requestFacebook = (facebookObject) => async (dispatch) =>{
+  try{
+    const res = await axios.post('/api/login-facebook', facebookObject, config);
+  
+    console.log(res.data);
+    localStorage.setItem("token", res.data.token);
+    dispatch({ type: LOGIN_FACEBOOK_SUCCESS, payload: res.data });
+  }catch (err) {
+    localStorage.removeItem("token");
+    console.log("error", err.response.status);
+    dispatch({ type: LOGIN_FACEBOOK_FAIL, payload: err.response });
+  }
+};
+
+export const requestGoogle = (googleObject) => async (dispatch) => {
+  try{
+    const res = await axios.post('/api/login-google', googleObject, config);
+  
+    console.log(res.data);
+    localStorage.setItem("token", res.data.token);
+    dispatch({ type: LOGIN_GOOGLE_SUCCESS, payload: res.data });
+  }catch (err) {
+    localStorage.removeItem("token");
+    console.log("error", err.response.status);
+    dispatch({ type: LOGIN_GOOGLE_FAIL, payload: err.response });
+  }
+};
+
 export const requestLogin = (email, password) => async (dispatch) => {
   try {
     const url = "/api/login";
@@ -28,8 +61,6 @@ export const requestLogin = (email, password) => async (dispatch) => {
     const res = await axios.post(url, data, config);
 
     console.log(res.data);
-    const user = jwt(res.data.token);//decode the jwt token
-    console.log('decoded jwt', user);
     localStorage.setItem("token", res.data.token);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
   } catch (err) {
@@ -55,13 +86,14 @@ export const requestSignUp = (data) => async (dispatch) => {
 
 export const getUser = () => async (dispatch) => {
   try {
-    console.log("user in actions");
+    console.log("user in actions => config", config);
     const res = await axios.get("/api/getUser", config);
 
     const user = res.data;
     console.log("user", user);
     dispatch({ type: GET_USER, payload: user });
   } catch (err) {
+    localStorage.removeItem("token");
     dispatch({ type: GET_USER_FAIL, payload: err.response });
   }
 };
@@ -77,9 +109,11 @@ export const getMyProducts = () => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
+    console.log('logging out')
     await axios.post("/api/logout", {}, config);
 
     if (localStorage.token) localStorage.removeItem("token");
+    console.log('logged out completely')
     dispatch({ type: LOGGED_OUT_SUCCESS });
   } catch (err) {
     dispatch({ type: LOGGED_OUT_FAIL, payload: err.response });

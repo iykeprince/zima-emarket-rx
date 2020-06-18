@@ -1,0 +1,16 @@
+#images-container{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#images-container .image-container{
+    border:1px solid #eee;
+    padding: 50px;
+    -webkit-box-shadow: -2px -2px 33px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px -2px 33px -6px rgba(0,0,0,0.75);
+    box-shadow: -2px -2px 33px -6px rgba(0,0,0,0.75);
+}
+#images-conainer .image-container i{
+    font-size: 22px;
+    font-weight: bold;
+}

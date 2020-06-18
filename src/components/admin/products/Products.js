@@ -1,18 +1,19 @@
 import React from "react";
 import ProductItem from "./ProductItem";
 import { Spinner } from "evergreen-ui";
+import { Link } from "react-router-dom";
 
 const Products = ({ products }) => {
-  
+  console.log('products', products)
   return (
     <div className="">
-      <a href="/add-product" className="btn btn-outline-primary">
+      <Link to="/add-product" className="btn btn-outline-primary">
         <i className="fa fa-add"></i> Add Products{" "}
         <span className="badge badge-default">
           ({products.length})
         </span>
-      </a>
-      <hr class="p-1"/>
+      </Link>
+      <hr className="p-1"/>
       <div className="product-list-layout">
         <div>
           {products && products.length === 0 ? (

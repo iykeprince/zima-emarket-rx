@@ -1,0 +1,97 @@
+.top-cards .card {
+    border: none;
+    -webkit-box-shadow: -2px -2px 33px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px -2px 33px -11px rgba(0,0,0,0.75);
+    box-shadow: -2px -2px 33px -11px rgba(0,0,0,0.75);
+}
+
+.top-cards .card .card-body {
+    position: relative;
+    padding: 8px 12px;
+}
+
+.top-cards .card .card-cascade {
+
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    padding: 20px;
+    -webkit-box-shadow: -2px -2px 33px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px -2px 33px -6px rgba(0,0,0,0.75);
+    box-shadow: -2px -2px 33px -6px rgba(0,0,0,0.75);
+}
+
+.top-cards .card .card-cascade-primary {
+    background-color: royalblue;
+}
+
+.top-cards .card .card-cascade-orange {
+    background-color: orange;
+}
+
+.top-cards .card .card-cascade-green {
+    background-color: green;
+}
+
+.top-cards .card .card-cascade i {
+    font-weight: 600;
+    font-size: 30px;
+    color: #ffffff;
+}
+
+.top-cards .card .card-body .card-title {
+    font-size: 14px;
+    ;
+}
+
+.top-cards .card .card-body .card-text {
+    font-size: 32px;
+    font-weight: 600;
+    font-family: "PT Sans";
+    padding: 12px 0;
+}
+
+.top-cards .card .card-footer {
+    padding: 8px 12px;
+    text-align: right;
+    border: none;
+}
+
+.top-cards .card .card-footer a {
+    font-size: 12px;
+    color: #444;
+    text-transform: capitalize;
+}
+
+/* Analytic */
+.analytic .card {
+    border: none;
+    background-color: #f9f9f9;
+    -webkit-box-shadow: -2px -2px 33px -11px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px -2px 33px -11px rgba(0,0,0,0.75);
+box-shadow: -2px -2px 33px -11px rgba(0,0,0,0.75);
+}
+
+.analytic .card .card-title {
+    font-size: 18px;
+}
+
+.analytic .graph-canvas {
+    position: relative;
+}
+
+LineChart {
+    border: 1px solid blue;
+}
+
+.activity .card {
+    border: none;
+
+    -webkit-box-shadow: -2px 0px 33px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 0px 33px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 0px 33px -8px rgba(0, 0, 0, 0.75);
+}
+
+.shop .card {
+    border: none;
+}

@@ -1,0 +1,27 @@
+.banner{
+    margin-top: 0px;
+    background-image: url(../../containers/Resources/banner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+.banner-overlay{
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.banner h4{
+    color: #fff;
+    font-size: 32px;
+    margin-top: 10%;
+    font-family: Montesserat;
+    font-weight: 300;
+}
+.container-fluid {
+    width: 100%;
+    overflow: hidden;
+}

@@ -11,6 +11,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import ZimaBottomLogo from '../Resources/zima_logo.png';
+import { Link } from 'react-router-dom';
 
 class Footer extends Component {
   render() {
@@ -23,9 +24,9 @@ class Footer extends Component {
               <div className='footer-box'>
                 <ul>
                   <li>Company</li>
-                  <li>About Us</li>
+                  <li><Link to="/about-us">About Us</Link></li>
                   <li>Career</li>
-                  <li>Privacy Policy</li>
+                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
                 </ul>
               </div>
               <div className='footer-box'>
@@ -46,7 +47,7 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-          <div className='container-fluid'>
+          <div className='container-fluid bg-dark'>
             <div className='row'>
               <div className='col-md-4 copyright'>
                 <p>&copy;2020 Zima.com.ng - All rights reserved.</p>

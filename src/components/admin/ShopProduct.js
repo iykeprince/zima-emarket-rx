@@ -1,31 +1,10 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../containers/layouts/dashboard";
 import Products from "./products/Products";
-import Spinner from "../Spinner";
-import axios from "axios";
+import { connect } from 'react-redux';
 
-const ShopProduct = ({ config, user, shop }) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    getProducts();
-    //eslint-disable-next-line
-  }, []);
-
-  if (loading) {
-    return <Spinner />;
-  }
-
-  const getProducts = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get(`/api/products`, config);
-      setProducts(res.data);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+const ShopProduct = ({ config, user, shop, products }) => {
+ 
   return (
     <DashboardLayout shop={shop} user={user}>
       <section>
@@ -52,5 +31,7 @@ const ShopProduct = ({ config, user, shop }) => {
     </DashboardLayout>
   );
 };
-
-export default ShopProduct;
+const mapStateToProps = state => ({
+  products: state.auth.products
+})
+export default connect(mapStateToProps, {})(ShopProduct);
